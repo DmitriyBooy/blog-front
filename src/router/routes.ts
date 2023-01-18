@@ -1,17 +1,23 @@
 import { RouteRecordRaw } from 'vue-router'
-import HomeView from '@/views/Main.vue'
+import MainLayout from '@/views/Layouts/MainLayout.vue'
 
 const routes: Array<RouteRecordRaw> = [
-    {
-        path: '/',
-        name: 'main',
-        component: HomeView
-    },
-    {
-        path: '/about',
-        name: 'about',
-        component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-    }
+  {
+    path: '',
+    children: [
+      {
+        path: '',
+        name: 'PostFeed',
+        component: () => import('../views/Pages/PostFeed.vue')
+      },
+      {
+        path: '/test',
+        name: 'test',
+        component: () => import('../views/Pages/AboutView.vue')
+      }
+    ],
+    component: MainLayout,
+  },
 ]
 
 export default routes

@@ -20,6 +20,7 @@ module.exports = {
         "vue/return-in-computed-property": 'off',
         "vue/no-use-v-if-with-v-for": 'off',
         "no-case-declarations": 'off',
+        "vue/multi-word-component-names": 'off',
         "getter-return": 'off',
         "vue/max-attributes-per-line": [ "error", {
             singleline: {
