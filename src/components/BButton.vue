@@ -5,10 +5,30 @@
         <slot />
       </p>
 
-      <div class="b-button-body-icons rounded-full flex items-center justify-center relative overflow-hidden">
-        <right-outlined class="b-button-body-icons-left absolute"/>
+      <div
+        class="b-button-body-icons rounded-full flex items-center justify-center relative overflow-hidden"
+      >
+        <right-outlined
+          v-if="!icon"
+          class="b-button-body-icons-left absolute"
+        />
 
-        <right-outlined class="b-button-body-icons-right absolute"/>
+        <right-outlined
+          v-if="!icon"
+          class="b-button-body-icons-right absolute"
+        />
+
+        <component
+          v-if="icon"
+          :is="icon"
+          class="b-button-body-icons-right absolute"
+        />
+
+        <component
+          v-if="icon"
+          :is="icon"
+          class="b-button-body-icons-left absolute"
+        />
       </div>
     </div>
   </div>
@@ -16,10 +36,9 @@
 
 <script lang="ts" setup>
 import { RightOutlined } from '@ant-design/icons-vue'
-import { ref, Ref } from 'vue'
+import { defineProps } from 'vue'
 
-let mouseEnter: Ref<boolean> = ref(false)
-
+defineProps<{ icon?: string }>()
 </script>
 
 <style lang="scss">
