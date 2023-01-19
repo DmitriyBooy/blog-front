@@ -1,42 +1,14 @@
 <template>
-  <div
-    class="b-button cursor-pointer overflow-hidden"
-    @mouseenter="mouseEnter = true"
-    @mouseleave="mouseEnter = false"
-    style="padding: 3px; height: 42px"
-  >
-    <div
-      class="flex h-full items-center px-2 justify-between"
-      :class="mouseEnter ? 'bg-white' : 'bg-black'"
-      style="border-radius: 24px; border: 1px solid white"
-    >
-      <p
-        class="b-button-text font-medium mb-0 mr-2"
-        :class="mouseEnter ? 'text-black' : 'text-white'"
-      >
+  <div class="b-button cursor-pointer overflow-hidden">
+    <div class="b-button-body flex h-full items-center px-2 justify-between">
+      <p class="b-button-body-text font-medium mb-0 mr-2">
         <slot />
       </p>
 
-      <div
-        class="rounded-full flex items-center justify-center relative overflow-hidden"
-        :class="mouseEnter ? 'bg-black' : 'bg-white'"
-        style="padding: 1px; width: 25px; height: 25px; transition: .3s cubic-bezier(.4,.4,0,1)"
-      >
-        <right-outlined
-          class="b-button-icon text-black absolute"
-          style="transition: .3s cubic-bezier(.4,.4,0,1)"
-          :style="{
-            transform: `translate(${ mouseEnter ? '100px' : 0 },0)`
-          }"
-        />
+      <div class="b-button-body-icons rounded-full flex items-center justify-center relative overflow-hidden">
+        <right-outlined class="b-button-body-icons-left absolute"/>
 
-        <right-outlined
-          class="b-button-icon text-white absolute"
-          style="transition: .3s cubic-bezier(.4,.4,0,1)"
-          :style="{
-            transform: `translate(${ mouseEnter ? 0 : '-100px' },0)`
-          }"
-        />
+        <right-outlined class="b-button-body-icons-right absolute"/>
       </div>
     </div>
   </div>
@@ -55,6 +27,64 @@ let mouseEnter: Ref<boolean> = ref(false)
   transition: .3s cubic-bezier(.4,.4,0,1);
   border: 1px solid white;
   border-radius: 20px;
+  padding: 3px;
+  height: 42px;
+
+  &-body {
+    border-radius: 24px;
+    border: 1px solid white;
+
+    &-text {
+      color: white
+    }
+
+    &-icons {
+      background: white;
+      padding: 1px;
+      width: 25px;
+      height: 25px;
+      transition: .3s cubic-bezier(.4,.4,0,1);
+
+      &-left {
+        transition: .3s cubic-bezier(.4,.4,0,1);
+        color: white !important;
+        left: -100px
+      }
+
+      &-right {
+        transition: .3s cubic-bezier(.4,.4,0,1);
+        color: black !important;
+        left: 50%;
+        transform: translate(-50%, 0);
+        position: absolute;
+      }
+    }
+  }
+
+  &:hover {
+    .b-button-body {
+      transition: .3s cubic-bezier(.4,.4,0,1);
+      background-color: white;
+
+      &-text {
+        color: black
+      }
+
+      &-icons {
+        background: black;
+
+        &-left {
+          left: 50%;
+          transform: translate(-50%, 0);
+          position: absolute;
+        }
+
+        &-right {
+          left: 100px
+        }
+      }
+    }
+  }
 
   span {
     color: inherit;
