@@ -6,4 +6,6 @@ export type PostType = {
     name: string
   }
   id: number
+  views: number
+  previewImg: string
 }
