@@ -1,23 +1,29 @@
 <template>
   <div>
     <div class="flex justify-center w-full px-2">
-      <div class="container flex items-center justify-between px-8">
+      <div class="container py-1 flex items-center justify-between px-8">
         <div class="flex gap-2">
           <b-button>
-            <span class="text-lg">
+            <span class="text-lg mr-16">
               Лента
             </span>
           </b-button>
         </div>
 
-        <a-button
-          class="text-white"
-          type="primary"
-          @mouseenter="e"
-        >
-          Login
-          {{asd}}
-        </a-button>
+        <div class="flex gap-2">
+          <b-button
+            :icon="LoginOutlined"
+          >
+            Войти
+            <!--            <login-outlined slot="icon"/>-->
+          </b-button>
+
+          <b-button
+            :icon="UserAddOutlined"
+          >
+            Регистрация
+          </b-button>
+        </div>
       </div>
     </div>
 
@@ -31,6 +37,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router'
+import { LoginOutlined, UserAddOutlined } from '@ant-design/icons-vue'
 import BButton from '@/components/BButton.vue'
 
 const router = useRouter()
