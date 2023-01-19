@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col pt-2 px-4 gap-y-2">
+  <div class="flex flex-col px-4 gap-y-2">
     <post
       v-for="post in feedNews"
       :key="post.id"
@@ -10,9 +10,7 @@
 
 <script lang="ts" setup>
 import { PostType } from '@/components/Post/types'
-import { defineAsyncComponent } from 'vue'
-
-const Post = defineAsyncComponent(() => import('../../components/Post/Post.vue'))
+import Post from '../../components/Post/Post.vue'
 
 const feedNews: Array<PostType> = [
   {
