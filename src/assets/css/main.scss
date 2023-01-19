@@ -1,11 +1,9 @@
 @font-face {
-  font-family: 'PT Sans';
-  src: url('../fonts/PTSans-Bold.ttf');
-  font-weight: normal;
-  font-style: normal;
+  font-family: 'Sofia Sans Extra Condensed';
+  src: url('../fonts/SofiaSansExtraCondensed-Regular.ttf') format('truetype');
 }
 
 p, span {
-  font-style: 'PT Sans';
+  font-family: 'Sofia Sans Extra Condensed', sans-serif;
   color: rgba(0,0,0,0.7)
 }
