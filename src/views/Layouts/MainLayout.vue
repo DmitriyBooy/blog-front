@@ -11,16 +11,11 @@
         </div>
 
         <div class="flex gap-2">
-          <b-button
-            :icon="LoginOutlined"
-          >
+          <b-button :icon="LoginOutlined">
             Войти
-            <!--            <login-outlined slot="icon"/>-->
           </b-button>
 
-          <b-button
-            :icon="UserAddOutlined"
-          >
+          <b-button :icon="UserAddOutlined">
             Регистрация
           </b-button>
         </div>

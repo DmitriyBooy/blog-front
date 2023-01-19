@@ -1,7 +1,7 @@
 <template>
   <div class="b-button cursor-pointer overflow-hidden">
     <div class="b-button-body flex h-full items-center px-2 justify-between">
-      <p class="b-button-body-text font-medium mb-0 mr-2">
+      <p class="b-button-body-text font-medium text-lg mb-0 mr-6">
         <slot />
       </p>
 
@@ -35,10 +35,10 @@
 </template>
 
 <script lang="ts" setup>
-import { RightOutlined } from '@ant-design/icons-vue'
+import IconType, { RightOutlined } from '@ant-design/icons-vue'
 import { defineProps } from 'vue'
 
-defineProps<{ icon?: string }>()
+defineProps<{ icon?: typeof IconType }>()
 </script>
 
 <style lang="scss">
@@ -75,7 +75,6 @@ defineProps<{ icon?: string }>()
         color: black !important;
         left: 50%;
         transform: translate(-50%, 0);
-        position: absolute;
       }
     }
   }
