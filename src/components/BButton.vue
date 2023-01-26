@@ -72,9 +72,14 @@ defineProps<{ icon?: typeof IconType }>()
 
       &-right {
         transition: .3s cubic-bezier(.4,.4,0,1);
-        color: black !important;
         left: 50%;
         transform: translate(-50%, 0);
+
+        svg {
+          path {
+            color: black !important;
+          }
+        }
       }
     }
   }
