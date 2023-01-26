@@ -1,5 +1,5 @@
 <template>
-  <div class="post">
+  <div class="post cursor-pointer">
     <div class="post-header flex justify-between mb-2">
       <p class="post-header-text text-white px-4 mb-0">
         <span class="text-inherit post-header-text-span">
@@ -24,16 +24,21 @@
     </div>
 
     <div class="post-body">
-      <div class="max-h-[150px] overflow-hidden rounded-[16px]">
+      <div class="max-h-[150px] overflow-hidden rounded-[16px] flex justify-center relative">
         <img
-          class="mb-2"
+          class="mb-2 post-body-img-blur absolute"
           :src="post.previewImg"
           alt="photo"
-          style="width: 100%"
+        >
+        
+        <img
+          class="mb-2 post-body-img"
+          :src="post.previewImg"
+          alt="photo"
         >
       </div>
 
-      <div class="px-2">
+      <div class="px-2 post-body-content">
         <div
           class="flex justify-between"
           style="border-bottom: 1px solid rgba(255, 255, 255, 0.4)"
@@ -47,10 +52,7 @@
           </span>
         </div>
 
-        <p
-          class="text-white"
-          style="font-size: 18px"
-        >
+        <p style="font-size: 18px">
           {{ post.content }}
         </p>
       </div>
@@ -60,7 +62,7 @@
 
 <script lang="ts" setup>
 import { defineProps } from 'vue'
-import { PostType } from '@/components/Post/types'
+import { PostType } from '@/components/PostPreview/types'
 import IconType, { LikeOutlined, DislikeOutlined, EyeOutlined } from '@ant-design/icons-vue'
 
 defineProps<{
@@ -115,39 +117,83 @@ defineProps<{
       }
 
       &-right{
-        color: black;
         transition: .3s cubic-bezier(.4,.4,0,1);
         left: 50%;
         transform: translate(-50%, 0);
+
+        svg {
+          path {
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  &-body {
+    &-img {
+      height: 150px;
+      transform: scale(2);
+      transition: .3s cubic-bezier(.4,.4,0,1);
+
+      &-blur {
+        width: 100%;
+        top: -50%;
+        filter: blur(4px);
+        transition: .3s cubic-bezier(.4,.4,0,1);
+      }
+    }
+
+    &-content {
+      p {
+        color: rgba(255, 255, 255, 0.4);
       }
     }
   }
 
   &:hover {
-    .post-header {
-      &-text {
-        &-span {
-          position: relative;
+    .post {
+      &-header {
+        &-text {
+          &-span {
+            position: relative;
 
-          &::after {
-            opacity: 1;
-            transform: translate3d(0, 0, 0);
+            &::after {
+              opacity: 1;
+              transform: translate3d(0, 0, 0);
+            }
+          }
+        }
+
+        &-icon {
+          border: 1px solid white;
+          background: black;
+
+          &-left {
+            left: 50%;
+            transform: translate(-50%, 0);
+            position: absolute;
+          }
+
+          &-right {
+            left: 100px
           }
         }
       }
 
-      &-icon {
-        border: 1px solid white;
-        background: black;
-
-        &-left {
-          left: 50%;
-          transform: translate(-50%, 0);
-          position: absolute;
+      &-body {
+        &-img {
+          transform: scale(2.3);
+          &-blur {
+            transform: scale(1.05);
+          }
         }
 
-        &-right {
-          left: 100px
+        &-content {
+          p {
+            color: white !important;
+            transition: .3s cubic-bezier(.4,.4,0,1);
+          }
         }
       }
     }
