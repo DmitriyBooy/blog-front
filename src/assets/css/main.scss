@@ -3,7 +3,8 @@
   src: url('../fonts/SofiaSansExtraCondensed-Regular.ttf') format('truetype');
 }
 
-p, span {
+* {
   font-family: 'Sofia Sans Extra Condensed', sans-serif;
-  color: rgba(0,0,0,0.7)
+  color: white;
+  font-size: 16px;
 }
