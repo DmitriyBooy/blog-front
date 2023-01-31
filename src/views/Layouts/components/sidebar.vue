@@ -55,6 +55,7 @@
           v-for="(button, index) in buttons"
           :key="index"
           class="sidebar-button flex w-full justify-between px-2 cursor-pointer"
+          @click="router.push({ name: button.pathName })"
         >
           <span class="text-4xl">
             &lt;
@@ -76,11 +77,14 @@
 <script lang="ts" setup>
 import { PushpinOutlined, EditOutlined, HeartOutlined } from '@ant-design/icons-vue'
 import UserStore from '../../../store/index'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const buttons = [
   {
     name: 'Профиль',
-    pathName: 'Профиль',
+    pathName: 'profile',
   },
   {
     name: 'Лента',
