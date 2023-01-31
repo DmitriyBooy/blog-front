@@ -1,7 +1,7 @@
 <template>
   <div class="py-2 px-4">
     <div class="sidebar">
-      <div class="sidebar-header border-2 border-white flex items-center justify-between w-full">
+      <div class="sidebar-header border-2 border-white flex items-center justify-between w-full mb-2">
         <div class="flex flex-grow px-8 justify-around">
           <div class="flex flex-col items-center">
             <pushpin-outlined />
@@ -49,6 +49,26 @@
           />
         </div>
       </div>
+
+      <div class="sidebar-buttons flex flex-col items-center">
+        <div
+          v-for="(button, index) in buttons"
+          :key="index"
+          class="sidebar-button flex w-full justify-between px-2 cursor-pointer"
+        >
+          <span class="text-4xl">
+            &lt;
+          </span>
+
+          <span class="text-3xl">
+            {{ button.name }}
+          </span>
+
+          <span class="text-4xl">
+            &gt;
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -56,6 +76,21 @@
 <script lang="ts" setup>
 import { PushpinOutlined, EditOutlined, HeartOutlined } from '@ant-design/icons-vue'
 import UserStore from '../../../store/index'
+
+const buttons = [
+  {
+    name: 'Профиль',
+    pathName: 'Профиль',
+  },
+  {
+    name: 'Лента',
+    pathName: 'Лента',
+  },
+  {
+    name: 'Мои посты',
+    pathName: 'Мои посты',
+  }
+]
 
 const user = UserStore()
 </script>
@@ -80,5 +115,13 @@ const user = UserStore()
       }
     }
    }
+
+  .sidebar-button {
+    transition: .3s cubic-bezier(.4,.4,0,1);
+  }
+
+  .sidebar-button:hover {
+      transform: scale(1.1);
+  }
 }
 </style>
